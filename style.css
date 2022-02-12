@@ -48,12 +48,24 @@
 }
 
 
-.playerImage{
+.playerImage1{
     border: 1px solid black;
     border-radius: 20px;
     width: 30vw;
-    height: 40vh;
+    height: 35vh;
     background-image: url("./images/space_hero.gif");
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 20px 10px white;
+}
+
+.playerImage2{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 30vw;
+    height: 35vh;
+    background-color: #202020;
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
@@ -75,12 +87,28 @@
 }
 
 
-.enemyImage{
+.enemyImage1{
     border: 1px solid black;
     border-radius: 20px;
     width: 30vw;
     height: 35vh;
     background-image: url("./images/enemy.gif");
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 20px 10px white;
+}
+
+.enemyImage2{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 25vw;
+    height: 30vh;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5em;
+    color: #f0f0f0;
+    background-color: #202020;
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
@@ -106,7 +134,7 @@
 #engage{
     border: 2px solid #202020;
     border-radius: 20px;
-    width: 25vw;
+    width: 20vw;
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -114,7 +142,7 @@
     font-size: 2em;
     box-shadow: 0px 0px 12px 8px #d0d0d0;
     background-color: #a0a0a0;
-    margin-top: 20%;
+    /* margin-top: 20%; */
     height: 10%;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
