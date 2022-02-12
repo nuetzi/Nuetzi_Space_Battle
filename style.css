@@ -1,37 +1,42 @@
 .bodyContainer{
     display: flex;
-   
     justify-content: space-between;
     height: 100vh;
     width: 100vw;
     margin: 0 auto;
     font-family: 'Share Tech Mono', monospace;
     background-size: 100%;
-    background-color: black;
-    color: white;
+    background-color: #101010;
+    color: #f0f0f0;
 }
+
+
 *{
     margin: 0;
     padding: 0;
 }
 
+
 .mainCharacterView{
-
-width: 50%;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
+
 .left{
+}
 
-}
+
 .right{
-    
 }
+
 
 .nameBox{
     border: 1px solid black;
+    border-radius: 20px;
     width: 25vw;
     height: 10vh;
     text-align: center;
@@ -40,58 +45,95 @@ align-items: center;
     align-items: center;
     font-size: 2em;
     box-shadow: 0px 0px 20px 10px white;
-
 }
+
+
 .playerImage{
-    border: 1px solidblack;
+    border: 1px solid black;
+    border-radius: 20px;
     width: 30vw;
     height: 40vh;
-    background-image: url("/images/space_hero.gif");
+    background-image: url("./images/space_hero.gif");
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0px 0px 20px 10px white;
-    
-
-    
 }
+
+
 .playerStats{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solidblack;
+    border: 1px solid black;
     width: 15vw;
     height: 15vh;
     text-align: center;
     font-size: 1.5em;
     box-shadow: 0px 0px 20px 10px white;
-    border-radius: 2%;
-
-
+    border-radius: 20px;
 }
+
+
 .enemyImage{
-    border: 1px solidblack;
+    border: 1px solid black;
+    border-radius: 20px;
     width: 30vw;
     height: 35vh;
-    background-image: url("/images/enemy.gif");
+    background-image: url("./images/enemy.gif");
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0px 0px 20px 10px white;
-    
-
-    
 }
+
+
 .enemyStats{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solidblack;
+    border: 1px solid black;
+    border-radius: 20px;
     width: 15vw;
     height: 15vh;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5em;
     box-shadow: 0px 0px 20px 10px white;
+}
 
+
+#engage{
+    border: 2px solid #202020;
+    border-radius: 20px;
+    width: 25vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    box-shadow: 0px 0px 12px 8px #d0d0d0;
+    background-color: #a0a0a0;
+    margin-top: 20%;
+    height: 10%;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    color: #202020;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+#engage:hover {
+    color: #f0f0f0;
+    border: solid 2px #f0f0f0;
+    -webkit-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+     transform: scale(1.03);
+}
+
+#engage:active {
+    position: relative;
+    box-shadow: 1px 1px 8px 6px #e8e8e8;
+    top: 1.5px;
 }

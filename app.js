@@ -1,7 +1,6 @@
 var alienShipArray = [];
-var alienShipIndex = 0;
 
-var alienShipCount = 6;  // Could prompt player for this input -- Need to fix prompt code
+var alienShipCount = 8;  // Could prompt player for this input -- Need to fix prompt code
 
 class ship {
     constructor(name, hull, firepower, accuracy, alive) {
@@ -11,56 +10,6 @@ class ship {
         this.accuracy = accuracy;
         this.alive = alive;
     }
-
-    beginBattle = () => {
-        let alienTarget = alienShipArray[alienShipIndex];
-
-        do {
-            if (playerShip.alive) {                          // Player attack phase
-                if (Math.random() < playerShip.accuracy) {
-                    alienTarget.hull -= playerShip.firepower; 
-                    console.log("Attack successful!");
-                    if (alienTarget.hull > 0) {
-                        console.log(alienTarget.name + " has " + alienTarget.hull + " hull integrity remaining.");
-                    } else {
-                        alienTarget.hull = 0;               //I don't like displaying negative values for health
-                        alienTarget.alive = false;
-                        console.log(alienTarget.name + " has been destroyed!");
-                    }
-                }
-                else {
-                    console.log("Your attack missed.")
-                }
-            }
-            
-            
-            if ((alienTarget.hull > 0) && playerShip.alive) {                         // Alien's attack phase
-                if (Math.random() < alienTarget.accuracy) {
-                    playerShip.hull -= alienTarget.firepower;
-                    console.log("You've been hit!");
-                    if (playerShip.hull > 0) {
-                        console.log(playerShip.name + " has " + playerShip.hull + " hull integrity remaining." );
-                    } else {
-                        playerShip.hull = 0;
-                        playerShip.alive = false;
-                        console.log(playerShip.name + " has been destroyed!");
-                        console.log("Game Over");  //Program needs to end here
-                    }
-                }
-                else {
-                    console.log("You evaded the alien attack.")
-                }
-            }
-            else if (playerShip.alive) {
-                alienShipIndex++;
-                if (alienShipIndex < alienShipArray.length) {
-                    console.log("Continue battling?");      //    if yes: alienShipIndex++;
-                }
-                else console.log("Congratulations! You have saved Earth from the alien invasion.");    
-            }
-        }
-        while (alienTarget.alive && playerShip.alive);
-    }
 }
 
 class alienShip extends ship {
@@ -69,18 +18,78 @@ class alienShip extends ship {
     }
 }
 
-const playerShip = new ship ("USS Schwarzenegger", 20, 5, 0.7, true);
 
+// Function that generates the specified number of enemies with randomized stats
 const generateEnemies = (alienShipCount) => {
     for (let i=0; i<alienShipCount; i++) {
         alienShipArray[i] = new alienShip (
-        "Alien #" + [i+1], 
-        Math.floor((Math.random() * 4) + 3), 
-        Math.floor((Math.random() * 3) + 2), 
-        (Math.floor(Math.random() * 3) + 6) / 10,
-        true
+        "Alien #" + [i+1],                              // Assign a name for the player to see
+        Math.floor((Math.random() * 4) + 3),            // Generates a hull value of 3 - 6
+        Math.floor((Math.random() * 3) + 2),            // Generates a firepower value of 2 - 4
+        (Math.floor(Math.random() * 3) + 6) / 10,       // Generates an accuracy value of 0.6 - 0.8
+        true                                            // Marks entity as alive
         );
     }
+}
+
+
+const playerShip = new ship ("USS Nuetzi", 20, 5, 0.7, true);
+generateEnemies(alienShipCount);
+var alienShipIndex = 0;
+var alienTarget = alienShipArray[0];
+
+beginBattle = () => {
+    alienTarget = alienShipArray[alienShipIndex];
+    document.querySelector("#enemyName").innerHTML = alienTarget.name
+
+    do {
+        if (playerShip.alive) {                          // Player attack phase
+            if (Math.random() < playerShip.accuracy) {
+                alienTarget.hull -= playerShip.firepower;
+                if (alienTarget.hull > 0) {
+                    alert("Attack successful! But " + alienTarget.name + " still has " + alienTarget.hull + " hull integrity remaining.");
+                } else {
+                    alienTarget.hull = 0;               // I don't like displaying negative values for health
+                    alienTarget.alive = false;          // Mark ship as dead, so it will not attack
+                    alert("Direct hit! " + alienTarget.name + " has been destroyed!");
+                }
+            }
+            else {
+                alert("Your attack missed.")
+            }
+        }
+        
+        
+        if (alienTarget.alive && playerShip.alive) {                         // Alien's attack phase
+            if (Math.random() < alienTarget.accuracy) {
+                playerShip.hull -= alienTarget.firepower;
+                if (playerShip.hull > 0) {
+                    alert("You've been hit! " + playerShip.name + " has " + playerShip.hull + " hull integrity remaining." );
+                } else {
+                    playerShip.hull = 0;
+                    playerShip.alive = false;
+                    alert(playerShip.name + " has been destroyed! The aliens have conquered.");
+                    alert("Game Over");  //Program needs to end here
+                }
+            }
+            else {
+                alert("You evaded the alien attack.")
+            }
+        }
+        else if (playerShip.alive) {
+            alienShipIndex++;
+            if (alienShipIndex < alienShipArray.length) {
+                let nextBattle = prompt("Continue battling? (Y/N)");      //    if yes: alienShipIndex++;
+                if (nextBattle.toLowerCase() === "n" || nextBattle.toLowerCase() === "no" || nextBattle === null) {        //Opt-out to stop the game
+                    playerShip.alive = false;
+                    alienTarget.alive = false;
+                    alert("You have chosen to retreat.")
+                }
+            }
+            else alert("Congratulations! You have saved Earth from the alien invasion.");    
+        }
+    }
+    while (alienTarget.alive && playerShip.alive);
 }
 
 /* -------------------------------------------------
@@ -124,12 +133,7 @@ attackEnemy = (target) => {
 -------------------------------------------------- */
 
 
+document.querySelector("#playerName").innerText = playerShip.name
 
-generateEnemies(alienShipCount);
-console.log(alienShipArray[alienShipIndex]);
-playerShip.beginBattle();
-playerShip.beginBattle();
-playerShip.beginBattle();
-playerShip.beginBattle();
-playerShip.beginBattle();
-playerShip.beginBattle();
+
+document.querySelector('#engage').addEventListener('click', beginBattle);
