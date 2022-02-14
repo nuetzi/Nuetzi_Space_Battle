@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     height: 100vh;
-    min-height: 800px;
+    min-height: 900px;
     width: 100vw;
-    min-width: 1210px;
+    min-width: 1280px;
     margin: 0 auto;
     padding: 0 auto;
     font-family: 'Share Tech Mono', monospace;
@@ -39,7 +39,7 @@
 
 
 .nameBox {
-    border: 1px solid black;
+    background-color: #080808;
     border-radius: 20px;
     width: 25vw;
     min-width: 300px;
@@ -54,8 +54,14 @@
 }
 
 
+.playerName {
+    border: 2px solid blue;
+    box-shadow: 0px 0px 20px 10px rgb(47, 47, 220);
+}
+
+
 .playerImage1 {
-    border: 1px solid black;
+    border: 2px solid white;
     border-radius: 20px;
     width: 30vw;
     min-width: 400px;
@@ -70,10 +76,11 @@
 
 
 .playerStats {
+    background-color: #080808;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid blue;
     width: 15vw;
     min-width: 200px;
     height: 15vh;
@@ -84,11 +91,12 @@
     border-radius: 20px;
 }
 
+
 .gap {          /* --- I'm using this as a blank div for spacing --- */
     width: 25vw;
     min-width: 400px;
-    height: 10vh;
-    min-height: 100px;
+    height: 15vh;
+    min-height: 120px;
     background-image: blank;
     background-size: cover ;
     background-position: center;
@@ -123,7 +131,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(47, 220, 47);
+    border: 2px solid black;
+    background-color: #080808;
     color:rgb(47, 220, 47);
     width: 15vw;
     min-width: 200px;
@@ -131,7 +140,7 @@
     min-height: 120px;
     text-align: center;
     font-size: 1.5em;
-    box-shadow: 0px 0px 20px 10px white;
+    box-shadow: 0px 0px 16px 10px #f0f0f0;
     border-radius: 20px;
     -webkit-transition: all 0.25s;
     transition: all 0.25s;
@@ -141,7 +150,7 @@
 
 .resetButton:hover {
     box-shadow: 0px 0px 20px 10px rgb(47, 220, 47);
-    color: rgb(47, 220, 47);
+    color: rgb(0, 255, 0);
     border: solid 2px rgb(0, 255, 0);
     -webkit-transform: scale(1.03);
     -ms-transform: scale(1.03);
@@ -149,8 +158,21 @@
 }
 
 
+.resetButton:active {
+    position: relative;
+    box-shadow: 0px 0px 8px 6px rgb(0, 255, 0);
+    top: 1.5px;
+}
+
+
+.enemyName {
+    border: 2px solid red;
+    box-shadow: 0px 0px 20px 10px rgb(220, 47, 47);
+}
+
+
 .enemyImage1 {
-    border: 1px solid black;
+    border: 2px solid white;
     border-radius: 20px;
     width: 30vw;
     min-width: 400px;
@@ -168,7 +190,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid red;
+    background-color: #080808;
     border-radius: 20px;
     width: 15vw;
     min-width: 200px;
@@ -181,7 +204,7 @@
 }
 
 
-#engage {
+.engage {
     border: 2px solid #202020;
     border-radius: 20px;
     width: 20vw;
@@ -190,8 +213,8 @@
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    box-shadow: 0px 0px 12px 8px #d0d0d0;
-    background-color: #a0a0a0;
+    box-shadow: 0px 0px 16px 10px #f0f0f0;
+    background-color: #909090;
     margin: 10%;
     height: 10%;
     text-align: center;
@@ -203,17 +226,19 @@
 }
 
 
-#engage:hover {
-    color: #f0f0f0;
-    border: solid 2px #f0f0f0;
+.engage:hover {
+    color: white;
+    background-color: #a0a0a0;
+    border: solid 2px white;
+    box-shadow: 0px 0px 16px 10px white;
     -webkit-transform: scale(1.03);
     -ms-transform: scale(1.03);
      transform: scale(1.03);
 }
 
 
-#engage:active {
+.engage:active {
     position: relative;
-    box-shadow: 1px 1px 8px 6px #e8e8e8;
+    box-shadow: 0px 0px 8px 6px white;
     top: 1.5px;
 }

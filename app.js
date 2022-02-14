@@ -11,11 +11,11 @@ class ship {
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
-        this.alive = alive;
+        this.alive = alive;                                 // Boolean value which will determine whether a ship can attack
     }
 }
 
-class alienShip extends ship {
+class alienShip extends ship {                              // Making a specific subclass for enemy ships to use in an array
     constructor(name, hull, firepower, accuracy, alive) {
     super(name, hull, firepower, accuracy, alive);    
     }
@@ -23,7 +23,6 @@ class alienShip extends ship {
 
 const beginGame = () => {
     
-
     // Function that generates the specified number of enemies with randomized stats
     const generateEnemies = (alienShipCount) => {
         for (let i=0; i<alienShipCount; i++) {
@@ -41,26 +40,28 @@ const beginGame = () => {
     alienShipIndex = 0;
     var alienTarget = alienShipArray[alienShipIndex];
     
-
-    let playerName = prompt("The alien's are attacking! Name the ship you will send to defend Earth.")        // Allow player to name their ship
+     // Allow player to name their ship -- Need code to limit string length
+    let playerName = prompt("The alien's are attacking! Name the ship you will send to defend Earth.")       
     if (playerName === null) {
         alert("Game aborted");
     }
 
-    if (playerName !== null) {
+    if (playerName !== null) {                                      // If player provides a name, generate the player ship
         playerShip = new ship (playerName, 20, 5, 0.7, true);  
     }
-    else playerShip = new ship ("", 0, 0, 0, false);
+    else playerShip = new ship ("", 0, 0, 0, false);                // If player cancels, return a "null" ship
 
     // Initialize displays
     document.querySelector(".battleStatus").innerHTML = " ";
-    document.querySelector("#playerName").innerHTML = playerShip.name;
-    document.querySelector("#enemyName").innerHTML = alienTarget.name;
+    document.querySelector(".playerName").innerHTML = playerShip.name;
+    document.querySelector(".enemyName").innerHTML = alienTarget.name;
     document.querySelector(".playerStats").innerHTML = 
         `Hull : ${playerShip.hull} <br> Fire Power : ${playerShip.firepower} <br> Accuracy : ${playerShip.accuracy}`;
     document.querySelector(".enemyStats").innerHTML = 
         `Hull : ${alienTarget.hull} <br> Fire Power : ${alienTarget.firepower} <br> Accuracy : ${alienTarget.accuracy}`;
 }   
+
+
 
 
 const beginBattle = () => {
@@ -86,7 +87,7 @@ const beginBattle = () => {
                         `Direct hit! ${alienTarget.name} has been destroyed!`;
                 }
             }
-            else if (alienTarget.alive) {                               // Prevents displays if attacking dead ships after victory
+            else if (alienTarget.alive) {                               // Prevents displays if user attacks dead ships after victory
                 document.querySelector(".battleStatus").innerHTML =
                     `Your attack missed.`
             }
@@ -106,9 +107,9 @@ const beginBattle = () => {
                     document.querySelector(".playerStats").innerHTML = 
                         `Hull : ${playerShip.hull} <br> Fire Power : ${playerShip.firepower} <br> Accuracy : ${playerShip.accuracy}`
                     playerShip.alive = false;                           // Mark player ship as dead
-                    document.querySelector(".battleStatus").innerHTML = "You have been defeated! <br> GAME OVER"
-                    alert("The " + playerShip.name + " has been destroyed! The aliens have won the space battle.");
-                    alert("Game Over");
+                    document.querySelector(".battleStatus").innerHTML = `The ${playerShip.name} has been destroyed! <br> The aliens have won the space battle.`;
+                    alert(`                                 You have been defeated!
+                                            GAME OVER`);                // This line spacing roughly centers the display text
                 }
             }
             else {
@@ -119,10 +120,10 @@ const beginBattle = () => {
 
         else if (playerShip.alive) {                                    // If an alien ship is destroyed, this code will run
             alienShipIndex++;                                           // Proceed to next ship object in the array
-            alienTarget = alienShipArray[alienShipIndex];               // Mark this new object as the target
             
-            if (alienShipIndex < alienShipArray.length) {               // If 
-                document.querySelector("#enemyName").innerHTML = alienTarget.name
+            if (alienShipIndex < alienShipArray.length) {       
+                alienTarget = alienShipArray[alienShipIndex];           // Mark this new object as the target
+                document.querySelector(".enemyName").innerHTML = alienTarget.name
                 document.querySelector(".enemyStats").innerHTML = 
                     `Hull : ${alienTarget.hull} <br> Fire Power : ${alienTarget.firepower} <br> Accuracy : ${alienTarget.accuracy}`
                 
@@ -130,7 +131,7 @@ const beginBattle = () => {
 
                 do {                                                    // I've put this in a do-while loop to check for valid input
                     if (nextBattle === null) {                          // If player clicks CANCEL, this ends the game
-                        alert("Game aborted");
+                        alert("Game aborted");                          // I think there's still an error in this part
                         playerShip.alive = false;
                         alienTarget.alive = false;
                     }
@@ -150,8 +151,9 @@ const beginBattle = () => {
             }
 
             else {
-                document.querySelector(".battleStatus").innerHTML = "VICTORY!"
+                document.querySelector(".battleStatus").innerHTML = "VICTORY! <br> The alien fleet has been destroyed."
                 alert("Congratulations! You have saved Earth from the alien invasion.");
+                playerShip.alive = false;                               // Prevents further running of the battle function after winning
             }    
         }
     }
@@ -163,7 +165,7 @@ const beginBattle = () => {
 document.querySelector('.resetButton').addEventListener('click', beginGame);
 
 // Button for engaging in battle
-document.querySelector('#engage').addEventListener('click', beginBattle);
+document.querySelector('.engage').addEventListener('click', beginBattle);
 
 
 
