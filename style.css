@@ -1,4 +1,4 @@
-.bodyContainer{
+.bodyContainer {
     display: flex;
     justify-content: space-between;
     height: 100vh;
@@ -17,12 +17,13 @@
 }
 
 
-.mainCharacterView{
+.mainCharacterView {
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    align-content: space-around;
 }
 
 
@@ -34,11 +35,13 @@
 }
 
 
-.nameBox{
+.nameBox {
     border: 1px solid black;
     border-radius: 20px;
     width: 25vw;
+    min-width: 300px;
     height: 10vh;
+    min-height: 100px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -48,11 +51,13 @@
 }
 
 
-.playerImage1{
+.playerImage1 {
     border: 1px solid black;
     border-radius: 20px;
     width: 30vw;
+    min-width: 400px;
     height: 35vh;
+    min-height: 300px;
     background-image: url("./images/space_hero.gif");
     background-size: cover ;
     background-position: center;
@@ -60,26 +65,48 @@
     box-shadow: 0px 0px 20px 10px white;
 }
 
-.playerImage2{
-    border: 1px solid black;
-    border-radius: 20px;
-    width: 30vw;
-    height: 35vh;
-    background-color: #202020;
-    background-size: cover ;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0px 0px 20px 10px white;
-}
 
-
-.playerStats{
+.playerStats {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
     width: 15vw;
+    min-width: 200px;
     height: 15vh;
+    min-height: 150px;
+    text-align: center;
+    font-size: 1.5em;
+    box-shadow: 0px 0px 20px 10px rgb(47, 47, 220);
+    border-radius: 20px;
+}
+
+
+.battleStatus {          /* --- I'm using this as a blank div for now -- It could be used to display battle stats/information --- */
+    /* border: 1px solid black; */
+    border-radius: 20px;
+    width: 25vw;
+    min-width: 400px;
+    height: 30vh;
+    min-height: 300px;
+    background-image: blank;
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5em;
+}
+
+.resetButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 15vw;
+    min-width: 200px;
+    height: 15vh;
+    min-height: 150px;
     text-align: center;
     font-size: 1.5em;
     box-shadow: 0px 0px 20px 10px white;
@@ -87,11 +114,13 @@
 }
 
 
-.enemyImage1{
+.enemyImage1 {
     border: 1px solid black;
     border-radius: 20px;
     width: 30vw;
+    min-width: 400px;
     height: 35vh;
+    min-height: 300px;
     background-image: url("./images/enemy.gif");
     background-size: cover ;
     background-position: center;
@@ -99,39 +128,25 @@
     box-shadow: 0px 0px 20px 10px white;
 }
 
-.enemyImage2{
-    border: 1px solid black;
-    border-radius: 20px;
-    width: 25vw;
-    height: 30vh;
-    text-align: center;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.5em;
-    color: #f0f0f0;
-    background-color: #202020;
-    background-size: cover ;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0px 0px 20px 10px white;
-}
 
-
-.enemyStats{
+.enemyStats {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
     border-radius: 20px;
     width: 15vw;
+    min-width: 200px;
     height: 15vh;
+    min-height: 150px;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5em;
-    box-shadow: 0px 0px 20px 10px white;
+    box-shadow: 0px 0px 20px 10px rgb(220, 47, 47);
 }
 
 
-#engage{
+#engage {
     border: 2px solid #202020;
     border-radius: 20px;
     width: 20vw;
@@ -142,7 +157,7 @@
     font-size: 2em;
     box-shadow: 0px 0px 12px 8px #d0d0d0;
     background-color: #a0a0a0;
-    /* margin-top: 20%; */
+    margin: 10%;
     height: 10%;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
