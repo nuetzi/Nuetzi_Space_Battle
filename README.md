@@ -28,6 +28,6 @@ The alien ships should each have the following ranged properties determined rand
 
 You could be battling six alien ships each with unique values.
  
-Get user input via the browser. prompt() is like an alert, but it opens up a window with a message AND a place to enter some text
+Get user input via the browser. `prompt()` is like an alert, but it opens up a window with a message AND a place to enter some text
 The received input can be used in your program
 Your app should run in the DOM. Users should see instructions through prompts, but the values of the enemy ship should change in the DOM.
