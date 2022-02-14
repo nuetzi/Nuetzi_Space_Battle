@@ -23,6 +23,8 @@ class alienShip extends ship {                              // Making a specific
 
 
 const beginGame = () => {
+    alienShipArray = [];            // Begin with a clear array each time a new game begins
+
     // Generates user prompt. Input value determines number of alien ships
     alienShipCount = prompt(`The aliens are attacking! How many of the alien invaders will you battle?
                         (Enter a number between 1 and 10)`);
